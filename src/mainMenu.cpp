@@ -11,3 +11,19 @@ void displayFile() {
 		file.close();
 	}
 }
+
+void mainMenu() {
+	int choice;
+
+	while (true) {
+		cin >> choice;
+	}
+	if (cin.fail() || choice < 1 || choice>3) {
+		cout << "Invalid input. Please enter a number between 1 and 3." << endl;
+		cin.fail();
+		cin.ignore();
+	}
+	else {
+		cout << endl;
+	}
+}

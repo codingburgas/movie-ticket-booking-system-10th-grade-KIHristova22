@@ -3,3 +3,4 @@
 #include <fstream>
 
 void displayFile();
+void mainMenu();
