@@ -129,7 +129,6 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\mainMenu.cpp" />
     <ClCompile Include="..\..\src\user.cpp" />
-    <ClCompile Include="MovieBookingSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\mainMenu.h" />
