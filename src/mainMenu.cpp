@@ -1,9 +1,10 @@
 #include "../include/mainMenu.h"
+#include "../include/user.h"
 #include <iostream>
 #include <fstream>
 using namespace std;
 
-void displayFile() {
+void displayMenu() {
 	cout << "********************************************" << endl;
 	cout << "                 WELCOME                   " << endl;
 	cout << "********************************************" << endl;
@@ -21,21 +22,52 @@ void displayFile() {
 }
 
 void mainMenu() {
-	int choice;
+    displayMenu();
 
-	while (true) {
-		cin >> choice;
-	}
-	if (cin.fail() || choice < 1 || choice>3) {
-		cout << "Invalid input. Please enter a number between 1 and 3." << endl;
-		cin.ignore();
-	}
-	else {
-		cout << endl;
-	}
+    User* userHead = nullptr;
+    int choice;
+
+    while (true) {
+        User* userHead = nullptr;
+        cin >> choice;
+
+        if (cin.fail() || choice < 1 || choice > 3) {
+            cin.clear();
+            cin.ignore(10000, '\n');
+            cout << "Invalid input. Please enter a number between 1 and 3." << endl;
+            continue;
+        }
+
+        if (choice == 1) {
+            string username, password;
+            cout << "Username: ";
+            cin >> username;
+            cout << "Password: ";
+            cin >> password;
+            addUser(userHead, username, password);
+            cout << "Registration successful!" << endl;
+        }
+        else if (choice == 2) {
+            string username, password;
+            cout << "Enter username: ";
+            cin >> username;
+            cout << "Enter password: ";
+            cin >> password;
+            if (loginUser(userHead, username, password)) {
+                cout << "Login successful! Welcome, " << username << "!" << endl;
+            }
+            else {
+                cout << "Login failed. Please check your credentials." << endl;
+            }
+        }
+        else if (choice == 3) {
+            cout << "Exiting program. Goodbye!" << endl;
+            break;
+        }
+    }
+
+    deleteUsers(userHead);
 }
-
 int main() {
-	displayFile();
 	mainMenu();
 }
