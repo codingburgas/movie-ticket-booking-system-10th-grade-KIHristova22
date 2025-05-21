@@ -1,8 +1,28 @@
 #include "../include/mainMenu.h"
 #include "../include/user.h"
+#include <conio.h>
 #include <iostream>
 #include <fstream>
 using namespace std;
+
+string hidePass() {
+    string password;
+    char ch;
+    while ((ch = _getch()) != '\r') { 
+        if (ch == '\b') { 
+            if (!password.empty()) {
+                cout << "\b \b";
+                password.pop_back();
+            }
+        }
+        else {
+            password += ch;
+            cout << '*';
+        }
+    }
+    cout << endl;
+    return password;
+}
 
 void displayMenu() {
 	cout << "********************************************" << endl;
@@ -28,7 +48,6 @@ void mainMenu() {
     int choice;
 
     while (true) {
-        User* userHead = nullptr;
         cin >> choice;
 
         if (cin.fail() || choice < 1 || choice > 3) {
@@ -39,20 +58,20 @@ void mainMenu() {
         }
 
         if (choice == 1) {
-            string username, password;
+            string username;
             cout << "Username: ";
             cin >> username;
             cout << "Password: ";
-            cin >> password;
+            string password = hidePass();
             addUser(userHead, username, password);
             cout << "Registration successful!" << endl;
         }
         else if (choice == 2) {
-            string username, password;
+            string username;
             cout << "Enter username: ";
             cin >> username;
             cout << "Enter password: ";
-            cin >> password;
+            string password = hidePass();
             if (loginUser(userHead, username, password)) {
                 cout << "Login successful! Welcome, " << username << "!" << endl;
             }
