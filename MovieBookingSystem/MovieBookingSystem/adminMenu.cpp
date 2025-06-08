@@ -2,52 +2,37 @@
 #include <iostream>
 using namespace std;
 
+Administration a;
+
 Administration::Administration() {
-    username = "admin1";
-    password = "adminpassword";
+    tickets = 0;
 }
 
-void Administration::authenticate() {
-    string id;
-    string pass;
-
-    cout << "Enter user ID: ";
-    cin >> id;
-
-    cout << "Enter password: ";
-    cin >> pass;
-
-    if (id == username && pass == password) {
-        cout << "Logged in successfully!" << endl;
-    }
-    else {
-        cout << "Invalid credentials." << endl;
-    }
+void Administration::operator++(int) {
+    tickets++;
 }
 
 void Administration::increaseTicket() {
     tickets++;
 }
 
-void Administration::showStatus() const {
-    if (status == 0) {
-        cout << "Occupancy not updated!" << endl;
-    }
-    else {
-        cout << "Occupancy: " << status << endl;
-    }
+void Administration::authenticate() {
+    string id, pass;
+    cout << "Enter user ID: ";
+    cin >> id;
+    cout << "Enter password: ";
+    cin >> pass;
 
-    if (tickets == 0) {
-        cout << "Ticket count not updated!" << endl;
+    try {
+        if (id == username && pass == password) {
+            cout << "Logged In Successfully!" << endl;
+            adminMenu();
+        }
+        else {
+            throw 1;
+        }
     }
-    else {
-        cout << "Tickets Sold: " << tickets << endl;
+    catch (int) {
+        cout << "Invalid credentials!" << endl;
     }
-}
-
-void Administration::updateStatus() {
-    cout << "Enter current Occupancy: ";
-    cin >> status;
-    cout << "Enter tickets sold: ";
-    cin >> tickets;
 }
