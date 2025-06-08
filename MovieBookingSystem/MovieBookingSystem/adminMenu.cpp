@@ -24,3 +24,30 @@ void Administration::authenticate() {
         cout << "Invalid credentials." << endl;
     }
 }
+
+void Administration::increaseTicket() {
+    tickets++;
+}
+
+void Administration::showStatus() const {
+    if (status == 0) {
+        cout << "Occupancy not updated!" << endl;
+    }
+    else {
+        cout << "Occupancy: " << status << endl;
+    }
+
+    if (tickets == 0) {
+        cout << "Ticket count not updated!" << endl;
+    }
+    else {
+        cout << "Tickets Sold: " << tickets << endl;
+    }
+}
+
+void Administration::updateStatus() {
+    cout << "Enter current Occupancy: ";
+    cin >> status;
+    cout << "Enter tickets sold: ";
+    cin >> tickets;
+}
