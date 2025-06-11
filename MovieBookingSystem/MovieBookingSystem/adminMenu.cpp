@@ -35,4 +35,20 @@ void Administration::authenticate() {
     catch (int) {
         cout << "Invalid credentials!" << endl;
     }
+} 
+
+void showStatus() {
+    if (a.status == 0) {
+        cout << "Occupancy not updated!" << endl;
+    }
+    else {
+        cout << "Occupancy: " << a.status << endl;
+    }
+
+    if (a.tickets == 0) {
+        cout << "Ticket count not updated!" << endl;
+    }
+    else {
+        cout << "Tickets Sold: " << a.tickets << endl;
+    }
 }
