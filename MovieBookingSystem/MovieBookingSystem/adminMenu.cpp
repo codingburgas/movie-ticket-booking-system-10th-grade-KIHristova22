@@ -1,5 +1,6 @@
 #include "adminMenu.h"
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 Administration a;
@@ -51,4 +52,25 @@ void showStatus() {
     else {
         cout << "Tickets Sold: " << a.tickets << endl;
     }
+}
+void updateStatus() {
+    cout << "Enter current Occupancy: ";
+    cin >> a.status;
+    cout << "Enter tickets sold: ";
+    cin >> a.tickets;
+}
+
+void addfilm() {
+    int n;
+    ofstream ofile("movies.txt", ios::app);
+    cout << "Enter number of films to add: ";
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        string movie;
+        cout << "Enter movie name: ";
+        cin >> ws;
+        getline(cin, movie);
+        ofile << movie << endl;
+    }
+    ofile.close();
 }
