@@ -60,17 +60,54 @@ void updateStatus() {
     cin >> a.tickets;
 }
 
-void addfilm() {
+void addMovies() {
     int n;
-    ofstream ofile("movies.txt", ios::app);
-    cout << "Enter number of films to add: ";
-    cin >> n;
     for (int i = 0; i < n; i++) {
         string movie;
         cout << "Enter movie name: ";
-        cin >> ws;
         getline(cin, movie);
-        ofile << movie << endl;
+        cout << "Movie added: " << movie << endl;
     }
-    ofile.close();
+}
+
+void showMovies() {
+    cout << "Available Movies:" << endl;
+    cout << "1. Transformers" << endl;
+    cout << "2. Harry Potter" << endl;
+    cout << "3. Spider-Man" << endl;
+    cout << "4. Pirates of the Carribean" << endl;
+    cout << "5. Lord of the rings" << endl;
+}
+
+void adminMenu()
+{
+    int choice;
+    while (true)
+    {
+        cout << "1. Add movies" << endl;
+        cout << "2. Show movies" << endl;
+        cout << "3. Check status" << endl;
+        cout << "4. Update status" << endl;
+        cout << "5. Exit" << endl;
+        cin >> choice;
+        switch (choice)
+        {
+        case 1:
+        {
+            addMovies();
+            break;
+        }
+        case 2:
+            showMovies();
+            break;
+        case 3:
+            showStatus();
+            break;
+        case 4:
+            updateStatus();
+            break;
+        case 5:
+            exit(0);
+        }
+    }
 }
