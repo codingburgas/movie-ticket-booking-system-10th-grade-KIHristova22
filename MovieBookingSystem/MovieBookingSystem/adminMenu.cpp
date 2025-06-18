@@ -62,6 +62,9 @@ void updateStatus() {
 
 void addMovies() {
     int n;
+    cout << "Enter number of movies to add: ";
+    cin >> n;
+    cin.ignore();
     for (int i = 0; i < n; i++) {
         string movie;
         cout << "Enter movie name: ";

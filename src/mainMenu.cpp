@@ -1,6 +1,6 @@
 #include "../include/mainMenu.h"
 #include "../include/user.h"
-#include "../src/adminMenu.h"
+#include "../include/adminMenu.h"
 #include <conio.h>
 #include <iostream>
 #include <fstream>
@@ -38,7 +38,8 @@ void displayMenu() {
 	cout << "Choose an option:" << endl;
 	cout << "1. Register" << endl;
 	cout << "2. Login" << endl;
-	cout << "3. Exit" << endl;
+    cout << "3. Admin login" << endl;
+	cout << "4. Exit" << endl;
 	cout << "********************************************" << endl;
 }
 
@@ -81,6 +82,9 @@ void mainMenu() {
             }
         }
         else if (choice == 3) {
+            a.authenticate();
+        }
+        else if (choice == 4) {
             cout << "Exiting program. Goodbye!" << endl;
             break;
         }
