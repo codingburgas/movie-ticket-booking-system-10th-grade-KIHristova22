@@ -20,7 +20,7 @@ public:
 };
 
 void adminMenu();
-void addFilm();
-void showFilm();
+void addMovies();
+void showMovies();
 void showStatus();
 void updateStatus();
