@@ -24,3 +24,5 @@ void addMovies();
 void showMovies();
 void showStatus();
 void updateStatus();
+
+extern Administration a;
