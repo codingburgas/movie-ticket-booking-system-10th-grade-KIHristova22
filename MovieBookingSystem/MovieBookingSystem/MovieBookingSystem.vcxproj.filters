@@ -21,7 +21,10 @@
     <ClCompile Include="..\..\src\user.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="adminMenu.cpp">
+    <ClCompile Include="..\..\src\customerMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\adminMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -32,7 +35,10 @@
     <ClInclude Include="..\..\include\user.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="adminMenu.h">
+    <ClInclude Include="..\..\include\customerMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\adminMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
