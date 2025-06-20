@@ -1,4 +1,5 @@
 #include "../include/adminMenu.h"
+#include "../include/password.h"
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -22,7 +23,7 @@ void Administration::authenticate() {
     cout << "Enter user ID: ";
     cin >> id;
     cout << "Enter password: ";
-    cin >> pass;
+    pass = hidePass();
 
     try {
         if (id == username && pass == password) {

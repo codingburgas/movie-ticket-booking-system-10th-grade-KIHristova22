@@ -1,30 +1,11 @@
 #include "../include/mainMenu.h"
 #include "../include/user.h"
 #include "../include/adminMenu.h"
-#include <conio.h>
+#include "../include/password.h"
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
 using namespace std;
-
-string hidePass() {
-    string password;
-    char ch;
-    while ((ch = _getch()) != '\r') { 
-        if (ch == '\b') { 
-            if (!password.empty()) {
-                cout << "\b \b";
-                password.pop_back();
-            }
-        }
-        else {
-            password += ch;
-            cout << '*';
-        }
-    }
-    cout << endl;
-    return password;
-}
 
 void displayMenu() {
 	cout << "********************************************" << endl;
