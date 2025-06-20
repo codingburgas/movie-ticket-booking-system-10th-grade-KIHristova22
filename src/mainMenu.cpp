@@ -4,6 +4,7 @@
 #include <conio.h>
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
 using namespace std;
 
 string hidePass() {
@@ -52,10 +53,10 @@ void mainMenu() {
     while (true) {
         cin >> choice;
 
-        if (cin.fail() || choice < 1 || choice > 3) {
+        if (cin.fail() || choice < 1 || choice > 4) {
             cin.clear();
             cin.ignore(10000, '\n');
-            cout << "Invalid input. Please enter a number between 1 and 3." << endl;
+            cout << "Invalid input. Please enter a number between 1 and 4." << endl;
             continue;
         }
 
@@ -86,7 +87,7 @@ void mainMenu() {
         }
         else if (choice == 4) {
             cout << "Exiting program. Goodbye!" << endl;
-            break;
+            exit(0);
         }
     }
 
