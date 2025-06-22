@@ -52,3 +52,28 @@ void bookTickets() {
     movie.bookedSeats += tickets;
     cout << "Tickets booked successfully for " << movie.name << "!" << endl;
 }
+
+void cancelTickets() {
+    int choice, tickets;
+    viewMovies();
+    cout << "Enter the movie number to cancel tickets for: ";
+    cin >> choice;
+
+    if (choice < 1 || choice > 5) {
+        cout << "Invalid movie number!" << endl;
+        return;
+    }
+
+    movieDetail& movie = movies[choice - 1];
+    cout << "How many tickets would you like to cancel for " << movie.name << "? ";
+    cin >> tickets;
+
+    if (tickets <= 0 || tickets > movie.bookedSeats) {
+        cout << "Invalid number of tickets!" << endl;
+        return;
+    }
+
+    movie.seat += tickets;
+    movie.bookedSeats -= tickets;
+    cout << "Tickets cancelled successfully for " << movie.name << "!" << endl;
+}
