@@ -77,3 +77,35 @@ void cancelTickets() {
     movie.bookedSeats -= tickets;
     cout << "Tickets cancelled successfully for " << movie.name << "!" << endl;
 }
+
+void customerMenu() {
+    initializeMovies();
+    int choice;
+
+    while (true) {
+        cout << "Customer Menu:" << endl;
+        cout << "1. View Movies" << endl;
+        cout << "2. Book Tickets" << endl;
+        cout << "3. Cancel Tickets" << endl;
+        cout << "4. Exit" << endl;
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+        case 1:
+            viewMovies();
+            break;
+        case 2:
+            bookTickets();
+            break;
+        case 3:
+            cancelTickets();
+            break;
+        case 4:
+            cout << "Exiting customer menu." << endl;
+            return;
+        default:
+            cout << "Invalid choice!" << endl;
+        }
+    }
+}
