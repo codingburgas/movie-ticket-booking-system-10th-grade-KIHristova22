@@ -2,6 +2,7 @@
 #include "../include/user.h"
 #include "../include/adminMenu.h"
 #include "../include/password.h"
+#include "../include/customerMenu.h"
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
@@ -76,4 +77,5 @@ void mainMenu() {
 }
 int main() {
 	mainMenu();
+    customerMenu();
 }
