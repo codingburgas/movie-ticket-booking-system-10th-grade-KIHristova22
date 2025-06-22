@@ -59,6 +59,8 @@ void mainMenu() {
             string password = hidePass();
             if (loginUser(userHead, username, password)) {
                 cout << "Login successful! Welcome, " << username << "!" << endl;
+                system("CLS");
+                customerMenu();
             }
             else {
                 cout << "Login failed. Please check your credentials." << endl;

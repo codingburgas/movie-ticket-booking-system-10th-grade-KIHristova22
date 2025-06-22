@@ -83,7 +83,6 @@ void customerMenu() {
     int choice;
 
     while (true) {
-        cout << "Customer Menu:" << endl;
         cout << "1. View Movies" << endl;
         cout << "2. Book Tickets" << endl;
         cout << "3. Cancel Tickets" << endl;
