@@ -12,7 +12,7 @@ public:
     int tickets;
 
     Administration();
-    void operator++(int);
+    void operator++(int);   
     void authenticate();
     void increaseTicket();
     friend void showStatus();

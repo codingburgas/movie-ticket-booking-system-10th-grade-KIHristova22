@@ -6,7 +6,7 @@ struct movieDetail {
 	string name;
 	int seat;
 	int bookedSeats;
-
+    bool seats[10][10];
 };
 
 movieDetail movies[5];
@@ -17,6 +17,29 @@ void initializeMovies() {
 	movies[2] = { 3, "Spider-Man", 100, 0 };
 	movies[3] = { 4, "Pirates of the Carribean", 100, 0 };
 	movies[4] = { 5, "Lord of the rings", 100, 0 };
+
+    for (int m = 0; m < 5; ++m) {
+        for (int i = 0; i < 10; ++i) {
+            for (int j = 0; j < 10; ++j) {
+                movies[m].seats[i][j] = false;
+            }
+        }
+    }
+}
+
+void displaySeats(const movieDetail& movie) {
+    cout << "Seat layout (O = available, X = booked):" << endl;
+    for (int i = 0; i < 10; ++i) {
+        for (int j = 0; j < 10; ++j) {
+            if (movie.seats[i][j]) {
+                cout << "X ";
+            }
+            else {
+                cout << "O ";
+            }
+        }
+        cout << "  Row " << i + 1 << endl;
+    }
 }
 
 void viewMovies() {
@@ -40,6 +63,8 @@ void bookTickets() {
     }
 
     movieDetail& movie = movies[choice - 1];
+    displaySeats(movie);
+
     cout << "How many tickets would you like to book for " << movie.name << "? ";
     cin >> tickets;
 
@@ -48,8 +73,30 @@ void bookTickets() {
         return;
     }
 
-    movie.seat -= tickets;
-    movie.bookedSeats += tickets;
+    for (int i = 0; i < tickets; ++i) {
+        int row, col;
+        cout << "Select seat " << i + 1 << " (row [1-10] and column [1-10]): ";
+        cin >> row >> col;
+
+        row--; col--;
+
+        if (row < 0 || row >= 10 || col < 0 || col >= 10) {
+            cout << "Invalid seat position!" << endl;
+            i--; 
+            continue;
+        }
+
+        if (movie.seats[row][col]) {
+            cout << "Seat already booked! Choose a different seat.\n";
+            i--; 
+        }
+        else {
+            movie.seats[row][col] = true;
+            movie.seat--;
+            movie.bookedSeats++;
+        }
+    }
+
     cout << "Tickets booked successfully for " << movie.name << "!" << endl;
 }
 
@@ -65,6 +112,8 @@ void cancelTickets() {
     }
 
     movieDetail& movie = movies[choice - 1];
+    displaySeats(movie);
+
     cout << "How many tickets would you like to cancel for " << movie.name << "? ";
     cin >> tickets;
 
@@ -73,8 +122,30 @@ void cancelTickets() {
         return;
     }
 
-    movie.seat += tickets;
-    movie.bookedSeats -= tickets;
+    for (int i = 0; i < tickets; ++i) {
+        int row, col;
+        cout << "Enter seat " << i + 1 << " to cancel (row [1-10] and column [1-10]): ";
+        cin >> row >> col;
+
+        row--; col--;
+
+        if (row < 0 || row >= 10 || col < 0 || col >= 10) {
+            cout << "Invalid seat position!" << endl;
+            i--; 
+            continue;
+        }
+
+        if (!movie.seats[row][col]) {
+            cout << "That seat is not booked! Try again.\n";
+            i--; 
+        }
+        else {
+            movie.seats[row][col] = false;
+            movie.seat++;
+            movie.bookedSeats--;
+        }
+    }
+
     cout << "Tickets cancelled successfully for " << movie.name << "!" << endl;
 }
 
