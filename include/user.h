@@ -11,3 +11,6 @@ struct User {
 void addUser(User*& head, const string& username, const string& password);
 bool loginUser(User* head, const string& username, const string& password);
 void deleteUsers(User*& head);
+void loadUsers(User*& head);
+void saveUsers(User* head);
+string hidePass();

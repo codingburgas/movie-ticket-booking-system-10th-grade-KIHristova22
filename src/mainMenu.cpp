@@ -49,6 +49,7 @@ void mainMenu() {
             cout << "Password: ";
             string password = hidePass();
             addUser(userHead, username, password);
+            saveUsers(userHead);
             cout << "Registration successful!" << endl;
         }
         else if (choice == 2) {
@@ -70,6 +71,7 @@ void mainMenu() {
             a.authenticate();
         }
         else if (choice == 4) {
+            saveUsers(userHead);
             cout << "Exiting program. Goodbye!" << endl;
             exit(0);
         }

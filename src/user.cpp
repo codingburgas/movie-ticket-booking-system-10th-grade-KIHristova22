@@ -1,4 +1,6 @@
 #include "../include/user.h"
+#include <iostream>
+#include <fstream>
 
 void addUser(User*& head, const string& username, const string& password) {
     User* newUser = new User;
@@ -24,4 +26,19 @@ void deleteUsers(User*& head) {
         head = head->next;
         delete temp;
     }
+}
+
+void saveUsers(User* head) {
+    ofstream fout("users.txt");
+    if (!fout.is_open()) {
+        cout << "Error opening file to save users." << endl;
+        return;
+    }
+
+    User* temp = head;
+    while (temp) {
+        fout << temp->username << ' ' << temp->password << endl;
+        temp = temp->next;
+    }
+    fout.close();
 }
