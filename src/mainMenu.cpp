@@ -5,7 +5,7 @@
 #include "../include/customerMenu.h"
 #include <iostream>
 #include <fstream>
-#include <cstdlib>
+#include <cstdlib> //For system("CLS") and exit()
 using namespace std;
 
 void displayMenu() {
@@ -41,7 +41,7 @@ void mainMenu() {
             cout << "Invalid input. Please enter a number between 1 and 4." << endl;
             continue;
         }
-
+        //Register
         if (choice == 1) {
             string username;
             cout << "Username: ";
@@ -52,6 +52,7 @@ void mainMenu() {
             saveUsers(userHead);
             cout << "Registration successful!" << endl;
         }
+        //Login
         else if (choice == 2) {
             string username;
             cout << "Enter username: ";
@@ -68,9 +69,11 @@ void mainMenu() {
                 cout << "Login failed. Please check your credentials." << endl;
             }
         }
+        //Admin login
         else if (choice == 3) {
             a.authenticate();
         }
+        //Exiting the program
         else if (choice == 4) {
             saveUsers(userHead);
             cout << "Exiting program. Goodbye!" << endl;

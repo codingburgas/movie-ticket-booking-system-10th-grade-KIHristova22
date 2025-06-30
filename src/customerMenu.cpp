@@ -9,7 +9,7 @@ struct movieDetail {
     bool seats[10][10];
 };
 
-movieDetail movies[5];
+movieDetail movies[5]; //5 movies
 
 void initializeMovies() {
 	movies[0] = { 1, "Transformers", 100, 0 };
@@ -17,7 +17,7 @@ void initializeMovies() {
 	movies[2] = { 3, "Spider-Man", 100, 0 };
 	movies[3] = { 4, "Pirates of the Carribean", 100, 0 };
 	movies[4] = { 5, "Lord of the rings", 100, 0 };
-
+    //Set all seats to available
     for (int m = 0; m < 5; ++m) {
         for (int i = 0; i < 10; ++i) {
             for (int j = 0; j < 10; ++j) {
@@ -88,7 +88,7 @@ void bookTickets() {
 
         if (movie.seats[row][col]) {
             cout << "Seat already booked! Choose a different seat.\n";
-            i--; 
+            i--;  //Retry current ticket
         }
         else {
             movie.seats[row][col] = true;

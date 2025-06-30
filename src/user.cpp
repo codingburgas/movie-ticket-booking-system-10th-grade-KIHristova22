@@ -2,16 +2,18 @@
 #include <iostream>
 #include <fstream>
 
+//Adds a new user to the beginning of the linked list
 void addUser(User*& head, const string& username, const string& password) {
     User* newUser = new User;
     newUser->username = username;
     newUser->password = password;
     newUser->next = head;
-    head = newUser;
+    head = newUser; // Update head to point to the new user
 }
 
+//Checks if a user with the given username and password exists
 bool loginUser(User* head, const string& username, const string& password) {
-    User* current = head;
+    User* current = head; // Start from the head of the list
     while (current != nullptr) {
         if (current->username == username && current->password == password)
             return true;
@@ -19,7 +21,7 @@ bool loginUser(User* head, const string& username, const string& password) {
     }
     return false;
 }
-
+//Frees memory by deleting all users in the linked list
 void deleteUsers(User*& head) {
     while (head != nullptr) {
         User* temp = head;
@@ -28,6 +30,7 @@ void deleteUsers(User*& head) {
     }
 }
 
+//Saves all users to "users.txt"
 void saveUsers(User* head) {
     ofstream fout("users.txt");
     if (!fout.is_open()) {

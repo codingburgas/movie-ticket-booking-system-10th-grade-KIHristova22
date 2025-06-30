@@ -3,7 +3,7 @@
 #include <iostream>
 #include <fstream>
 using namespace std;
-
+//Global Administration object
 Administration a;
 
 Administration::Administration() {
